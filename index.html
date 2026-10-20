@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="theme-color" content="#071a2b" />
+  <title>Benjamin Franklin Plumbing of North Austin | Chat</title>
+  <style>
+    :root{color-scheme:dark;--navy:#071a2b;--navy2:#0d263b;--panel:#102b40;--aqua:#5ce1e6;--aqua2:#a1f1ed;--ink:#eaf6f8;--muted:#a9bdc8;--line:rgba(176,224,235,.15);--orange:#ffbe69;--trade-photo:url('https://i.ibb.co/xKf1q57B/pexels-bulat843-1243575272-37340084.jpg')}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--navy);color:var(--ink)}body{min-height:100vh;overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}a{color:inherit}
+    .stage{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:100svh;padding:24px 16px;overflow-x:hidden;overflow-y:auto;background:linear-gradient(to top,rgba(0,0,0,.38),transparent 42%),#28231d}
+    .app{position:relative;width:min(100%,780px);min-height:min(820px,calc(100svh - 48px));display:flex;flex-direction:column;border:1px solid rgba(172,225,238,.22);border-radius:25px;background:rgba(8,29,46,.88);box-shadow:0 35px 100px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.06);backdrop-filter:blur(17px);overflow:hidden}
+    .landing{width:min(100%,680px);padding:clamp(30px,7vw,64px);border:1px solid rgba(172,225,238,.18);border-radius:28px;background:linear-gradient(145deg,rgba(9,34,51,.78),rgba(8,28,45,.55));box-shadow:0 30px 90px #0005;backdrop-filter:blur(10px)}.landing-kicker{display:flex;align-items:center;gap:9px;color:var(--aqua2);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.landing-kicker::before{content:"";width:22px;height:1px;background:var(--aqua)}.landing h1{max-width:560px;margin:17px 0 15px;font-size:clamp(35px,7vw,66px);line-height:1.04;letter-spacing:-.055em}.landing h1 span{color:var(--aqua)}.landing p{max-width:510px;margin:0;color:#b1c6d0;font-size:15px;line-height:1.75}.landing-details{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.landing-details span{padding:8px 11px;border:1px solid #b3e8ed24;border-radius:999px;background:#d8ffff08;color:#d0e4e9;font-size:11px}
+    .topbar{display:flex;align-items:center;gap:13px;padding:18px 20px;border-bottom:1px solid var(--line);background:linear-gradient(110deg,rgba(18,57,77,.88),rgba(8,32,49,.72))}.brand-mark{width:44px;height:44px;display:grid;place-items:center;flex:none;border-radius:14px 14px 14px 4px;color:#062437;background:linear-gradient(135deg,var(--aqua2),#33b8d1);font-weight:900;font-size:14px;box-shadow:0 0 24px #52d4dd35}.brand-copy{min-width:0;flex:1}.brand-copy strong{display:block;font-size:14px;letter-spacing:.01em}.brand-copy small{display:block;margin-top:4px;color:var(--muted);font-size:12px}.status{display:flex;align-items:center;gap:7px;margin-top:6px;color:#a5d8d2;font-size:12px}.status i{width:7px;height:7px;border-radius:50%;background:#59e0a4;box-shadow:0 0 11px #59e0a4;}
+    
+    .chat-content{display:flex;flex:1;min-height:0;flex-direction:column}.messages{flex:1;min-height:300px;overflow:auto;padding:22px 22px 10px;scrollbar-color:#286176 transparent;scrollbar-width:thin}.message-row{display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;animation:enter .25s ease-out}.message-row.user{justify-content:flex-end}.avatar{display:grid;place-items:center;width:31px;height:31px;flex:none;border-radius:11px;color:#062537;background:linear-gradient(135deg,#a7f2ed,#42c6d6);font-size:15px;box-shadow:0 5px 15px #0003}.bubble{max-width:min(86%,580px);padding:13px 15px;border:1px solid rgba(184,221,231,.12);border-radius:5px 16px 16px 16px;background:rgba(18,49,68,.88);color:#d8e8ed;font-size:13px;line-height:1.65;overflow-wrap:anywhere}.user .bubble{border-color:#34afc7;background:linear-gradient(130deg,#147c99,#12647e);color:white;border-radius:16px 5px 16px 16px}.bubble p{margin:0 0 11px}.bubble p:last-child{margin-bottom:0}.bubble strong{color:#fff;font-weight:800}.bubble ul{margin:6px 0 10px;padding-left:19px}.bubble li{padding:2px 0}.reply-title{display:flex;align-items:center;gap:8px;margin:0 0 9px;color:#a9f2ee;font-size:14px;font-weight:800}.reply-title span{color:var(--orange)}.service-card{display:flex;align-items:center;gap:12px;margin:0 0 11px;padding:11px;border:1px solid rgba(92,225,230,.23);border-radius:13px;background:linear-gradient(110deg,rgba(44,131,151,.17),rgba(255,255,255,.025));}.service-icon{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:12px;background:#5ce1e61b;color:var(--aqua2);font-size:23px;animation:icon-float 3.2s ease-in-out infinite}.service-card strong{display:block;color:#e9ffff;font-size:12px}.service-card small{display:block;margin-top:3px;color:#abc2cd;font-size:11px;line-height:1.45}.emergency-banner{display:none;margin:14px 22px 0;padding:12px 14px;border:1px solid #ffbe6980;border-radius:13px;background:linear-gradient(100deg,#57371fcf,#3b2b20df);color:#fff0d5;box-shadow:0 8px 26px #0002;animation:enter .25s ease-out}.emergency-banner.visible{display:flex;align-items:center;gap:10px}.emergency-banner b{color:#ffd18d}.emergency-banner span{font-size:12px;line-height:1.5}.emergency-banner a{color:#fff;text-decoration:underline;font-weight:800;white-space:nowrap}
+    .reply-actions{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 15px 41px;animation:enter .25s ease-out}.reply-actions a,.reply-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:33px;padding:7px 10px;border:1px solid #5ce1e64b;border-radius:10px;background:#0d354b;color:#c9f8f6;text-decoration:none;font-size:10px;font-weight:750;transition:.18s}.reply-actions a:hover,.reply-actions button:hover{transform:translateY(-1px);background:#14506a}.reply-actions .call-action{background:#4ed7dc;color:#062637;border-color:#4ed7dc}.reply-actions .call-action:hover{background:#9af1ed}
+    .suggestions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;flex:none;padding:8px 14px;border-top:1px solid var(--line);background:rgba(5,15,20,.42)}.suggestion-list{display:flex;flex:1 1 100%;min-width:0;flex-wrap:wrap;gap:7px;overflow:visible;white-space:normal}.suggestion{min-height:36px;padding:8px 12px;border:1px solid rgba(96,215,224,.28);border-radius:999px;background:rgba(17,55,73,.75);color:#d6f5f3;font-size:11px;font-weight:700;transition:transform .18s,background .18s,border-color .18s}.suggestion:hover{transform:translateY(-2px);border-color:var(--aqua);background:#16495c}.suggestion.fixed{border-color:#ffbe6970;color:#ffe0b2;background:#55391f44}.suggestion.fixed:hover{background:#573f27}
+    .composer{display:flex;align-items:center;gap:9px;padding:12px 16px 15px;border-top:1px solid var(--line);background:rgba(5,20,33,.78)}.composer input{width:100%;min-width:0;height:44px;padding:0 14px;border:1px solid rgba(174,218,231,.2);border-radius:13px;outline:0;color:var(--ink);background:#0a263a;font-size:13px}.composer input::placeholder{color:#829aa8}.composer input:focus{border-color:#59dce2;box-shadow:0 0 0 3px #5ce1e61a}.send{width:44px;height:44px;flex:none;border:0;border-radius:13px;color:#062637;background:linear-gradient(135deg,#9af1ed,#48cad5);font-size:19px;font-weight:900;box-shadow:0 5px 18px #4acbd333}.note{margin:0;padding:0 16px 12px;text-align:center;color:#78909e;background:rgba(5,20,33,.78);font-size:12px}
+    .launcher{position:fixed;right:20px;bottom:18px;z-index:5;display:flex;align-items:center;gap:10px;padding:13px 19px;border:1px solid rgba(208,255,255,.75);border-radius:999px;background:linear-gradient(135deg,#b9fff7 0%,#67e2e8 48%,#33b4d0 100%);color:#052538;box-shadow:0 14px 38px #0008,0 0 0 6px #5ce1e61a,0 0 35px #5ce1e655;font-size:13px;font-weight:850;transition:transform .22s,box-shadow .22s;animation:launcher-pulse 3.2s ease-in-out infinite}.launcher:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 18px 45px #0009,0 0 0 8px #5ce1e622,0 0 42px #5ce1e677}.launcher-icon{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#06364b;color:#a9fff5;font-size:16px;box-shadow:inset 0 1px 4px #fff5,0 3px 10px #00324566}.launcher[aria-expanded="true"] .launcher-icon{transform:rotate(45deg)}.launcher-icon{transition:transform .2s}@keyframes launcher-pulse{50%{box-shadow:0 14px 38px #0008,0 0 0 9px #5ce1e610,0 0 40px #5ce1e65c}}
+    .chat-shell{position:fixed;right:20px;bottom:84px;z-index:4;width:min(440px,calc(100vw - 32px));height:min(82dvh,740px);max-height:calc(100dvh - 104px);min-height:0;perspective:1200px;transform:perspective(1200px) translateY(14px) rotateX(9deg) rotateY(-7deg) scale(.84);transform-origin:bottom right;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s linear .42s}.chat-shell.open{opacity:1;visibility:visible;pointer-events:auto;transform:perspective(1200px) translateY(0) rotateX(0) rotateY(0) scale(1);transition:opacity .28s ease,transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s}.chat-shell .app{width:100%;height:100%;min-height:0;border-radius:22px;overflow:hidden}.chat-shell .messages{padding:18px 18px 8px;min-height:0;overscroll-behavior:contain}.chat-shell .topbar{padding:14px}.chat-shell .suggestions{padding:10px 14px 12px}.chat-shell .composer{padding:10px 12px 12px}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @keyframes enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@keyframes icon-float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-3px) rotate(3deg)}}
+    @media(max-width:640px){.stage{display:flex;justify-content:flex-start;gap:14px;padding:28px 16px 100px;min-height:100svh}.landing{width:min(100%,680px);margin:0;padding:30px 23px}.landing p{font-size:14px}.emergency-banner{margin-right:16px;margin-left:16px}.emergency-banner span{font-size:12px}}
+    @media(max-width:380px){.brand-mark{width:38px;height:38px}.brand-copy strong{font-size:12px!important}.suggestion{font-size:13px!important;padding:8px 9px!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+    /* Keep the requested trade-work photo visible in natural color. */
+    .stage::before{content:"";position:absolute;inset:-3%;z-index:-1;background:var(--trade-photo) center/cover no-repeat;transform:scale(1);transform-origin:center;animation:photo-drift 38s ease-in-out infinite alternate;will-change:transform}
+    @keyframes photo-drift{to{transform:scale(1.07) translateY(-1.2%)}}
+    .topbar{position:relative;z-index:3}
+    .contact-trigger,.service-trigger{flex:none;padding:8px 12px;border:1px solid #76f4f2;border-radius:10px;background:linear-gradient(135deg,#21a9c5,#127697);color:#fff;font-size:11px;font-weight:850;box-shadow:0 0 0 2px #5ce1e633,0 5px 16px #0005,0 0 16px #5ce1e655;transition:transform .18s,box-shadow .18s,background .18s}
+    .contact-trigger:hover,.service-trigger:hover{transform:translateY(-1px);background:linear-gradient(135deg,#39c7dc,#1688a8);box-shadow:0 0 0 3px #5ce1e655,0 7px 20px #0006,0 0 20px #5ce1e677}
+    .service-trigger{background:linear-gradient(135deg,#b6fff4,#52dce3);color:#052638;border-color:#e0ffff;box-shadow:0 0 0 2px #5ce1e655,0 5px 18px #0005,0 0 20px #5ce1e688}
+    .contact-card[hidden]{display:none!important}
+    .contact-card{position:absolute;top:calc(100% + 8px);right:12px;z-index:10;display:flex;width:min(310px,calc(100vw - 40px));flex-direction:column;gap:8px;padding:16px;border:1px solid #6bdce8;border-radius:15px;background:#092338;box-shadow:0 18px 40px #0008;animation:card-in .18s ease-out}
+    .contact-card>strong{margin-bottom:2px;color:#a9f2ee;font-size:14px}
+    .contact-card>a{padding:7px 9px;border-radius:8px;background:#ffffff0c;color:#e9f7f8;text-decoration:none;font-size:11px;line-height:1.35}
+    .contact-card>a:hover{background:#ffffff19}
+    .contact-card>a.contact-book,.contact-card>a.contact-call{display:flex;justify-content:center;background:#1688a8;color:#fff;font-weight:800;text-align:center}
+    .contact-card>a.contact-call{background:#58d9df;color:#052638}
+    .contact-close{position:absolute;top:8px;right:9px;width:25px;height:25px;border:0;border-radius:50%;background:#ffffff15;color:#fff;font-size:18px;line-height:1}
+    .chat-close{display:grid;place-items:center;width:32px;height:32px;flex:none;border:1px solid #b6e9ed30;border-radius:50%;background:#ffffff0c;color:#eaf6f8;font-size:21px;line-height:1}
+    .chat-close:hover{background:#ffffff20}
+    @keyframes card-in{from{opacity:0;transform:translateY(-6px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .suggestion{min-height:30px;flex:0 0 auto;padding:6px 10px;font-size:10px}
+    .suggestion.fixed{border-color:rgba(96,215,224,.28);color:#d6f5f3;background:rgba(17,55,73,.75)}
+    .chat-content{flex:1;min-height:0}
+    .chat-shell .bubble{line-height:1.7}
+    .chat-shell.open .app{animation:water-pop .48s ease-out both}
+    @keyframes water-pop{0%{box-shadow:0 0 0 0 #5ce1e600}45%{box-shadow:0 0 0 12px #5ce1e638}100%{box-shadow:0 35px 100px #0007,0 0 0 0 #5ce1e600}}
+    .composer{flex:none;position:relative;z-index:2}
+    .note{flex:none}
+    @media(max-width:640px){
+      .chat-shell .app{height:100%;min-height:0;border:0;border-radius:0;padding-bottom:env(safe-area-inset-bottom)}
+      .chat-shell .topbar{padding:calc(12px + env(safe-area-inset-top)) 12px 12px;gap:9px}
+      .chat-shell .brand-mark{width:38px;height:38px}
+      .chat-shell .brand-copy strong{font-size:11px}
+      .chat-shell .brand-copy small{font-size:12px}
+      .chat-shell .status{font-size:12px}
+      .chat-shell .messages{padding:14px 12px 6px;min-height:0}
+      .chat-shell .bubble{max-width:calc(100vw - 70px);font-size:12px}
+      .chat-shell .suggestions{padding:7px 10px}
+      .chat-shell .composer{padding:9px 10px}
+      .chat-shell .composer input{height:42px}
+      .chat-shell .contact-card{right:8px;top:calc(100% + 4px)}
+      .launcher{z-index:1}
+    }
+    @media(prefers-reduced-motion:reduce){.stage::before{animation:none}.chat-shell.open .app{animation:none}}
+
+    /* Keep the photo natural; use only a subtle dark fade at the bottom. */
+
+    .landing{background:rgba(8,20,27,.34);backdrop-filter:blur(3px)}
+    .app{background:rgba(8,20,27,.48)}
+    .topbar{background:rgba(8,20,27,.48)}
+    .composer,.note{background:rgba(5,15,20,.46)}
+    .contact-card{transform-origin:top right;transform:perspective(700px) rotateX(-9deg) rotateY(-7deg) translateY(-5px);animation:contact-3d .28s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes contact-3d{to{transform:perspective(700px) rotateX(0) rotateY(0) translateY(0)}}
+    .offer-card{margin:10px 0;padding:12px 13px;border:1px solid rgba(92,225,230,.28);border-radius:13px;background:linear-gradient(140deg,rgba(30,96,112,.43),rgba(7,31,43,.68));box-shadow:0 8px 20px #0003;animation:offer-in .3s ease-out both;transform-style:preserve-3d}
+    .offer-card strong{display:block;margin-bottom:5px;color:#a9f2ee;font-size:12px}
+    .offer-card p{margin:4px 0;color:#d8e8ed;font-size:11px;line-height:1.55}
+    .offer-card small{display:block;margin-top:6px;color:#ffd18d;font-size:10px;line-height:1.5}
+        .suggestion{transition:transform .18s,background .18s,border-color .18s,box-shadow .18s}
+    .suggestion:hover{transform:translateY(-2px) rotateX(4deg);box-shadow:0 5px 13px #0003}
+    @keyframes offer-in{from{opacity:0;transform:perspective(600px) rotateX(-7deg) translateY(7px)}to{opacity:1;transform:perspective(600px) rotateX(0) translateY(0)}}
+    @media(prefers-reduced-motion:reduce){.contact-card,.offer-card{animation:none}.suggestion,.service-card{transition:none}}
+    .emergency-banner{border-color:#ff5b63;background:linear-gradient(100deg,#681e25ed,#411b20ed);color:#fff0f0}
+    .emergency-banner b{color:#ffd1d3}
+    .offer-card{margin:12px 0;padding:14px;transform-style:preserve-3d}
+    .offer-card:first-child{margin-top:8px}.offer-card:last-child{margin-bottom:8px}
+    .offer-card .offer-terms{color:#c7dbe1;font-size:10px;line-height:1.55}
+    @media(prefers-reduced-motion:reduce){.offer-card{animation:none}}
+    .reviews{width:min(100%,680px);padding:17px 20px 14px;border:1px solid rgba(220,248,250,.28);border-radius:20px;background:rgba(7,20,25,.22);backdrop-filter:blur(2px);box-shadow:0 12px 40px #0002}
+    .reviews-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:10px}
+    .reviews-heading .landing-kicker{font-size:12px}
+    .reviews h2{margin:6px 0 0;color:#f4fcfc;font-size:clamp(18px,3vw,23px);letter-spacing:-.035em}
+    .review-ratings{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+    .review-ratings span{padding:6px 8px;border:1px solid #e5ffff30;border-radius:999px;background:#08191e36;color:#f0f9f9;font-size:12px;white-space:nowrap}
+    .review-ratings b{color:#ffe2a5}
+    .review-card{min-height:112px;padding:12px 14px;border:1px solid #e5ffff2b;border-radius:14px;background:rgba(5,18,22,.26);transition:opacity .24s ease,transform .24s ease}
+    .review-card.is-changing{opacity:0;transform:translateY(5px)}
+    .review-stars{color:#ffd27e;font-size:12px;letter-spacing:2px}
+    .review-card blockquote{margin:6px 0 9px;color:#f2f8f8;font-size:13px;line-height:1.55;text-shadow:0 1px 5px #0008}
+    .review-byline{display:flex;align-items:center;gap:9px;color:#eefafa;font-size:10px}
+    .review-byline span{color:#b9d0d3}
+    .review-progress{display:flex;justify-content:center;gap:5px;margin-top:9px}
+    .review-progress i{width:5px;height:5px;border-radius:50%;background:#eaffff65;transition:width .2s,background .2s}
+    .review-progress i.active{width:17px;border-radius:5px;background:var(--aqua)}
+    .review-disclaimer{margin:7px 0 0;color:#d1dfdf;font-size:12px;text-align:center;text-shadow:0 1px 5px #0008}
+    @media(max-width:640px){.stage{display:flex;justify-content:flex-start;gap:14px;padding:28px 16px 100px}.landing{width:min(100%,680px);margin:0;padding:30px 23px}.reviews{padding:14px 13px 12px}.reviews-heading{align-items:flex-start;flex-direction:column;gap:8px}.review-ratings{justify-content:flex-start}.review-card blockquote{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){.review-card,.review-progress i{transition:none}}
+
+    /* Keep the review panel compact while giving the featured review and chat button emphasis. */
+    .reviews{padding:10px 13px 9px;border-radius:15px;background:rgba(7,20,25,.12);backdrop-filter:blur(1px)}
+    .reviews-heading{align-items:center;margin-bottom:6px}
+    .reviews-heading .landing-kicker{font-size:12px}
+    .reviews h2{font-size:15px}
+    .review-ratings{gap:4px}
+    .review-ratings span{padding:4px 6px;font-size:12px}
+    .review-card{height:118px;min-height:118px;overflow:hidden;padding:8px 10px;background:rgba(5,18,22,.12)}
+    .review-stars{font-size:10px}
+    .review-card blockquote{margin:4px 0 6px;font-size:13px;line-height:1.45}
+    .review-byline{font-size:10px}
+    .review-byline span{font-size:12px}
+    .reviews-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+    .review-footer-copy{display:flex;align-items:center;gap:8px;min-width:0}
+    .review-progress{flex:none;margin:0}
+    .review-disclaimer{margin:0;font-size:12px;text-align:left}
+    .reviews .launcher{position:static;right:auto;bottom:auto;z-index:auto;flex:none;gap:10px;padding:15px 22px;border:2px solid rgba(225,255,255,.95);border-radius:999px;box-shadow:0 10px 28px #0008,0 0 0 7px #5ce1e638,0 0 38px #5ce1e680;font-size:15px;animation:launcher-pulse 2.2s ease-in-out infinite}
+    .reviews .launcher:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 32px #0009,0 0 0 9px #5ce1e650,0 0 45px #5ce1e6a0}
+    .reviews .launcher-icon{width:30px;height:30px;font-size:18px}
+    @media(max-width:640px){
+      .reviews{padding:9px 10px 8px}
+      .reviews-heading{align-items:flex-start;flex-direction:column;gap:4px}
+      .reviews h2{font-size:14px}
+      .review-ratings{justify-content:flex-start}
+      .review-card blockquote{font-size:12px}
+      .review-byline{font-size:10px}
+      .reviews-footer{gap:7px}
+      .review-footer-copy{gap:5px}
+      .review-disclaimer{max-width:135px;font-size:12px}
+      .reviews .launcher{padding:12px 18px;font-size:13px}
+      .reviews .launcher-icon{width:27px;height:27px;font-size:17px}
+    }
+
+    .service-catalog-card{display:flex;align-items:center;gap:14px;min-height:100px;margin:0 0 11px;padding:15px;border:1px solid rgba(92,225,230,.35);border-radius:16px;background:linear-gradient(125deg,rgba(44,131,151,.29),rgba(8,31,44,.5));box-shadow:0 8px 20px #0003}
+    .service-catalog-card:last-child{margin-bottom:0}
+    .service-catalog-card .service-icon{width:48px;height:48px;border-radius:14px;font-size:25px}
+    .service-summary-copy{display:block;min-width:0;flex:1}
+    .service-summary-copy strong{display:block;color:#e9ffff;font-size:13px;line-height:1.35}
+    .service-summary-copy small{display:block;margin-top:6px;color:#c2d7df;font-size:11px;line-height:1.55}
+    .service-view{display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;flex:none;padding:8px 11px;border:1px solid #70edf0;border-radius:12px;background:linear-gradient(135deg,#55dce2,#22a9c4);color:#052638;font-size:10px;font-weight:900;white-space:nowrap;box-shadow:0 5px 16px #25bacb55;transition:transform .18s,box-shadow .18s,background .18s}
+    .service-view:hover,.service-view:focus-visible{transform:translateY(-2px);background:linear-gradient(135deg,#a9fff5,#5ce1e6);box-shadow:0 8px 20px #25bacb77;outline:2px solid #d9ffff;outline-offset:2px}
+    .service-arrow{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#06364b;color:#a9fff5;font-size:18px;line-height:1}
+    .service-card + div{margin-top:12px;padding:14px;border:1px solid rgba(92,225,230,.2);border-radius:14px;background:rgba(3,20,30,.28);color:#d8e8ed;font-size:12px;line-height:1.8}
+    .service-card + div p{margin:0 0 12px}
+    .service-card + div p:last-child{margin-bottom:0}
+    .service-card + div ul{margin:6px 0 12px;padding-left:21px}
+    .service-card + div li{padding:3px 0}
+    @media(max-width:420px){.service-catalog-card{gap:9px;min-height:92px;padding:10px}.service-catalog-card .service-icon{width:36px;height:36px;font-size:20px}.service-summary-copy strong{font-size:11px}.service-summary-copy small{font-size:12px;line-height:1.45}.service-view{gap:5px;min-height:38px;padding:6px 8px;font-size:12px}.service-arrow{width:20px;height:20px;font-size:16px}}
+    @media(prefers-reduced-motion:reduce){.service-arrow{transition:none}}
+
+    /* Accessible sizing and responsive chat layout */
+    .bubble,.bubble p,.bubble li,.service-card small,.service-summary-copy small,.offer-card p,.offer-card small,.service-card + div{font-size:15px}
+    .composer input{font-size:16px}
+    .suggestion,.service-trigger,.contact-trigger,.reply-actions a,.reply-actions button,.service-view{font-size:13px}
+    .note,.review-disclaimer,.review-ratings span,.review-byline,.review-byline span,.contact-card>a{font-size:12px}
+    .review-controls{display:flex;align-items:center;gap:10px}
+    .review-nav{display:grid;place-items:center;width:38px;height:38px;border:1px solid #e5ffff60;border-radius:50%;background:#08191e55;color:#efffff;font-size:24px;line-height:1}
+    .review-nav:hover,.review-nav:focus-visible{background:#16495c;outline:2px solid var(--aqua);outline-offset:2px}
+    .reviews .launcher{position:fixed;right:20px;bottom:18px;z-index:5}
+    .reply-actions{margin-left:41px}
+
+    @media(max-width:640px){
+      .chat-shell{inset:var(--chat-viewport-top,0px) 0 auto 0;width:100vw;height:var(--chat-viewport-height,100dvh);max-height:none;min-height:0;bottom:auto;right:auto;transform:translateY(12px) scale(.98)}
+      .chat-shell.open{transform:translateY(0) scale(1)}
+      .chat-shell .app{height:var(--chat-viewport-height,100dvh);padding-bottom:0}
+      .chat-shell .messages{min-height:0}
+      .chat-shell .bubble{max-width:calc(100vw - 70px);font-size:15px}
+      .chat-shell .composer{padding-bottom:calc(9px + env(safe-area-inset-bottom))}
+      .reviews-footer{align-items:stretch;flex-direction:column}
+      .review-footer-copy{align-items:flex-start;flex-direction:column}
+      .review-controls{justify-content:center;order:2}
+      .review-nav{width:40px;height:40px}
+      body.chat-open #launcher{display:none}
+      .reviews .launcher{right:16px;bottom:calc(15px + env(safe-area-inset-bottom))}
+      .stage::before{animation:none;will-change:auto}
+    }
+    @media(prefers-reduced-motion:reduce){.stage::before{animation:none}.review-card{transition:none}}
+
+    /* Compact, familiar review carousel and a clear, responsive chat layout. */
+    .reviews .launcher{position:static;right:auto;bottom:auto;z-index:auto;flex:none}
+    .review-progress{display:none}
+    .reviews-footer{justify-content:center;gap:8px;margin-top:5px}
+    .review-footer-copy{display:none}
+    .review-controls{justify-content:center;gap:9px}
+    .review-card{height:auto;min-height:104px}
+    .review-card blockquote{font-size:13px}
+    .suggestions{flex-wrap:nowrap;gap:6px;min-width:0}
+    .suggestion-list{flex:1 1 auto;flex-wrap:nowrap;gap:5px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none}
+    .suggestion-list::-webkit-scrollbar{display:none}
+    .suggestion{min-height:32px;padding:6px 8px;font-size:12px;white-space:nowrap}
+    .service-trigger{padding:7px 9px;font-size:12px}
+    .brand-mark{overflow:hidden;background-color:#0d4257;background-image:var(--trade-photo);background-position:center;background-size:cover;background-repeat:no-repeat;color:transparent;font-size:0}
+    .chat-shell .topbar{min-height:66px}
+    .chat-shell .brand-copy strong{font-size:13px}
+    .chat-shell .brand-copy small{margin-top:2px;font-size:11px}
+    .chat-shell .status{display:none}
+    .service-catalog-card{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:start;gap:8px 10px;min-height:0;padding:12px}
+    .service-catalog-card .service-icon{grid-row:1;grid-column:1;width:38px;height:38px;font-size:21px}
+    .service-summary-copy{grid-row:1;grid-column:2;min-width:0}
+    .service-summary-copy strong{font-size:14px;line-height:1.35;overflow-wrap:normal;word-break:normal}
+    .service-summary-copy small{margin-top:4px;font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+    .service-view{grid-row:2;grid-column:2;justify-self:start;min-height:36px;padding:6px 10px;font-size:12px}
+    .chat-shell .bubble{overflow-wrap:normal}
+    @media(max-width:640px){
+      .chat-shell{inset:var(--chat-viewport-top,0px) 0 auto;width:100vw;height:var(--chat-viewport-height,100dvh);max-height:none;bottom:auto;right:auto}
+      .chat-shell .app{height:100%;min-height:0}
+      .chat-shell .topbar{min-height:calc(62px + env(safe-area-inset-top));padding:calc(10px + env(safe-area-inset-top)) 10px 10px;gap:8px}
+      .chat-shell .brand-mark{width:36px;height:36px}
+      .chat-shell .brand-copy strong{font-size:11px;line-height:1.15;white-space:normal}
+      .chat-shell .brand-copy small{font-size:10px;line-height:1.15;white-space:normal}
+      .chat-shell .contact-trigger{padding:7px 8px;font-size:12px}
+      .chat-shell .chat-close{width:30px;height:30px}
+      .chat-shell .messages{min-height:0}
+      .chat-shell .bubble{max-width:calc(100vw - 54px);font-size:15px}
+      .chat-shell .suggestions{gap:5px;padding:7px 8px}
+      .chat-shell .suggestion-list{min-width:0}
+      .chat-shell .suggestion{font-size:11px;padding:5px 7px}
+      .chat-shell .service-trigger{padding:6px 8px;font-size:12px}
+      .chat-shell .composer{padding-bottom:calc(9px + env(safe-area-inset-bottom))}
+      .service-catalog-card{grid-template-columns:36px minmax(0,1fr);gap:8px;padding:10px}
+      .service-catalog-card .service-icon{width:34px;height:34px;font-size:19px}
+      .service-summary-copy strong{font-size:13px}
+      .service-summary-copy small{font-size:13px}
+      .service-view{font-size:12px}
+      .reviews{padding:9px 10px 8px}
+      .reviews-footer{gap:5px}
+      .reviews .launcher{padding:11px 15px;font-size:13px}
+      .reviews .launcher-icon{width:25px;height:25px;font-size:16px}
+      .review-nav{width:36px;height:36px}
+      body.chat-open #launcher{display:none}
+    }
+
+    /* Fixed review-card geometry prevents the chat action from shifting as quotes rotate. */
+    .review-card{display:flex;height:118px;min-height:118px;flex-direction:column;overflow:hidden}
+    .review-card blockquote{display:-webkit-box;flex:1;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+    .review-byline{flex:none;margin-top:auto}
+    .reviews .reviews-footer{justify-content:flex-end;align-items:center;flex-direction:row;gap:0;min-height:52px}
+    .reviews .reviews-footer .launcher{position:static;right:auto;bottom:auto;margin-left:auto}
+    .reviews .review-progress{display:none}
+    .speak-button{display:inline-flex;align-items:center;gap:6px;min-height:32px;margin-top:10px;padding:6px 10px;border:1px solid #5ce1e64b;border-radius:10px;background:#0d354b;color:#c9f8f6;font-size:12px;font-weight:750}
+    .speak-button:hover,.speak-button:focus-visible{background:#14506a;outline:2px solid var(--aqua);outline-offset:2px}
+    .speak-button[aria-pressed="true"]{border-color:var(--aqua);background:#14506a}
+    @media(max-width:640px){.reviews .reviews-footer{justify-content:flex-end;align-items:center;flex-direction:row;gap:0}.review-card{height:118px;min-height:118px}}
+
+    /* Review carousel additions; the chat launcher retains its existing styling and placement. */
+    .review-card{height:auto;min-height:255px;overflow:visible;transition:opacity .24s ease,transform .24s ease}
+    .review-card blockquote{display:-webkit-box;flex:0 1 auto;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:4}
+    .review-card blockquote.expanded{display:block;overflow:visible;-webkit-line-clamp:unset}
+    .review-more{align-self:flex-start;flex:none;margin:3px 0 5px;padding:3px 0;border:0;background:transparent;color:var(--aqua2);font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+    .review-more:hover,.review-more:focus-visible{color:#fff;outline:2px solid var(--aqua);outline-offset:3px;border-radius:3px}
+    .review-more[hidden]{display:none}
+    .review-byline{flex-wrap:wrap;row-gap:3px}
+    .review-byline time{color:#b9d0d3}
+    .review-byline time:not(:empty)::before{content:"·";padding:0 5px;color:#b9d0d3}
+    .review-card.is-changing{pointer-events:none}
+    @media(max-width:640px){
+      .review-card{min-height:290px;padding:10px}
+      .review-card blockquote{font-size:13px;line-height:1.45}
+      .review-more{font-size:13px}
+      .review-byline{column-gap:5px}
+      .review-byline time:not(:empty)::before{padding:0 2px}
+    }
+
+    /* Keep the collapsed review compact so the Chat With Us button stays in view. */
+    .review-card{height:auto;min-height:0;overflow:hidden;padding:9px 11px}
+    .review-stars{flex:none;font-size:11px}
+    .review-card blockquote{display:-webkit-box;flex:none;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3;margin:5px 0 2px}
+    .review-card blockquote.expanded{display:block;overflow:visible;-webkit-line-clamp:unset}
+    .review-card.is-expanded{overflow:visible}
+    .review-more{margin:0 0 4px;font-size:13px;line-height:1.2}
+    .review-byline{flex:none;margin-top:2px;font-size:11px}
+    @media(max-width:640px){.review-card{height:auto;min-height:0;padding:8px 9px}.review-card blockquote{font-size:13px;line-height:1.4}.review-byline{margin-top:2px}}
+
+    /* Keep the review area and its chat action in place as carousel text changes. */
+    .stage::before{animation:none;transform:none;will-change:auto}
+    .review-card{display:flex;height:112px;min-height:112px;max-height:112px;flex-direction:column;overflow:hidden;padding:8px 10px}
+    .review-card blockquote{display:-webkit-box;flex:none;max-height:4.2em;margin:4px 0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:1.4}
+    .review-card blockquote.expanded{display:-webkit-box;overflow:hidden;-webkit-line-clamp:3}
+    .review-byline{flex:none;flex-wrap:nowrap;margin-top:auto;white-space:nowrap}
+    .reviews-footer{height:52px;min-height:52px;flex:none}
+    @media(max-width:640px){.review-card{height:112px;min-height:112px;max-height:112px;padding:8px 9px}}
+
+    /* Compact review carousel: fixed card and footer keep the chat launcher steady. */
+    .reviews{padding:8px 11px;border-radius:14px}
+    .reviews-heading{margin-bottom:4px}
+    .reviews h2{margin-top:3px}
+    .review-ratings{gap:4px}
+    .review-ratings span{padding:3px 6px;font-size:11px}
+    .review-card{height:96px;min-height:96px;max-height:96px;padding:6px 9px}
+    .review-stars{line-height:1}
+    .review-card blockquote{flex:none;max-height:3.9em;margin:3px 0;line-height:1.3;-webkit-line-clamp:3}
+    .review-byline{margin-top:0;gap:6px;font-size:11px}
+    .reviews .reviews-footer{height:44px;min-height:44px;margin-top:3px;justify-content:space-between;gap:8px}
+    .reviews .review-progress{display:flex;align-items:center;justify-content:flex-start;gap:6px;min-width:0}
+    .review-progress button{width:8px;height:8px;flex:none;padding:0;border:0;border-radius:50%;background:#eaffff70;transition:transform .2s,background .2s,box-shadow .2s}
+    .review-progress button.active{background:#36c9df;box-shadow:0 0 9px #5ce1e6;transform:scale(1.25)}
+    .review-progress button:focus-visible{outline:2px solid #cfffff;outline-offset:3px}
+    .reviews .reviews-footer .launcher{flex:none;margin-left:auto}
+    @media(max-width:640px){
+      .stage{padding-bottom:24px}
+      .reviews{padding:7px 8px}
+      .reviews-heading{gap:3px}
+      .review-card{height:96px;min-height:96px;max-height:96px;padding:6px 8px}
+      .reviews .reviews-footer{height:42px;min-height:42px;gap:6px}
+      .reviews .review-progress{gap:5px}
+      .review-progress button{width:7px;height:7px}
+    }
+    @media(prefers-reduced-motion:reduce){.review-progress button{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="stage">
+    
+    <section class="landing" aria-label="Benjamin Franklin Plumbing of North Austin"><div class="landing-kicker">North Austin · Cedar Park, TX, USA</div><h1>Plumbing help.<br /><span>Always within reach.</span></h1><p>Chat with the automated guide for service information, current offers, membership, service areas, and booking details.</p><div class="landing-details"><span>24/7 emergency service</span><span>Local line: (512) 648-4208</span><span>Service information &amp; booking</span></div></section>
+    <section class="reviews" aria-label="Customer reviews">
+      <div class="reviews-heading"><div><span class="landing-kicker">Customer stories</span><h2>Real experiences, shared.</h2></div><div class="review-ratings"><span><b>4.8 ★</b> North Austin · 1,334 Google reviews</span><span><b>4.82 ★</b> National · 120,752 Google reviews</span></div></div>
+      <article class="review-card" aria-atomic="true">
+        <div class="review-stars" aria-hidden="true">★★★★★</div>
+        <blockquote id="reviewQuote">“Brandon is personable, competent, thorough!!!”</blockquote>
+        <div class="review-byline"><strong id="reviewAuthor">David Hill</strong><time id="reviewDate">October 16, 2026</time></div>
+      </article>
+      <div class="reviews-footer">
+        <div class="review-progress" id="reviewProgress" role="tablist" aria-label="Select a customer review"></div>
+        <button class="launcher" id="launcher" type="button" aria-expanded="false" aria-controls="chatShell"><span class="launcher-icon" aria-hidden="true">✦</span>Chat with us</button>
+      </div>
+    </section>
+  </div>
+  <section class="chat-shell" id="chatShell" role="dialog" aria-modal="true" aria-label="Chat with us" aria-hidden="true">
+    <div class="app">
+      <header class="topbar"><div class="brand-mark" aria-hidden="true"></div><div class="brand-copy"><strong>Benjamin Franklin Plumbing</strong><small>24/7 Automated assistant</small></div><button class="contact-trigger" type="button" aria-expanded="false" aria-controls="popupContact">Contact</button><button class="chat-close" id="closeChat" type="button" aria-label="Close chat">×</button><div class="contact-card" id="popupContact" hidden><button class="contact-close" type="button" aria-label="Close contact card">×</button><strong>Contact us</strong><a href="tel:+15126484208">Local 24/7 line · (512) 648-4208</a><a href="tel:+18002597705">National line · (800) 259-7705</a><a href="tel:+17373162148">Club membership · (737) 316-2148</a><a class="contact-book" href="https://www.benjaminfranklinplumbing.com/north-austin/request-an-appointment/" target="_blank" rel="noopener noreferrer">Book online</a><a class="contact-call" href="tel:+15126484208">Call 24/7</a></div></header>
+      <div class="emergency-banner" id="popupEmergency" role="alert"><span>⚠ <b>Emergency guidance</b><br />Shut off the main water valve first, then call <a href="tel:+15126484208">(512) 648-4208</a> (24/7).</span></div>
+      <section class="chat-content"><div class="messages" id="popupMessages" aria-live="polite" aria-relevant="additions"><div class="message-row"><div class="avatar" aria-hidden="true">✦</div><div class="bubble"><div class="reply-title"><span>✦</span> Welcome</div><p>Hi there! I’m here to help with plumbing services, offers, membership, service areas, and booking details.</p><p>What can I do for you today?</p><button class="speak-button" type="button" data-speak="true" aria-label="Play this answer in English" aria-pressed="false">▶ Listen in English</button></div></div></div></section>
+      <section class="suggestions" aria-label="Suggested questions"><div class="suggestion-list" id="popupSuggestions"></div><button class="service-trigger" type="button" data-panel="popup" aria-label="Show all plumbing services">Services</button></section>
+      <form class="composer" id="popupForm"><label class="sr-only" for="popupInput">Your message</label><input id="popupInput" type="text" autocomplete="off" placeholder="Ask about plumbing or service…" /><button class="send" type="submit" aria-label="Send message">↑</button><span class="voice-status sr-only" id="popupVoiceStatus" aria-live="polite"></span></form><p class="note">Automated information only · For emergency service, call the local 24/7 line.</p>
+    </div>
+  </section>
+  <script>
+    const BIZ={name:'Benjamin Franklin Plumbing of North Austin, Cedar Park, TX, USA',local:'(512) 648-4208',national:'(800) 259-7705',club:'(737) 316-2148',address:'2000 Windy Terrace Dr, Bldg 7 Suite A, Cedar Park, TX 78613',hours:'24/7 emergency. Regular hours not listed.',areas:'Austin, Cedar Park, Georgetown, Hutto, Leander, Liberty Hill, McNeil, Pflugerville, Round Rock, Walburg, Weir.',license:'Responsible Master Plumber License #M15007 (Texas).',clubInfo:'Club membership: $7.99/month or $95.88/year. Includes 1 annual visit, trip charge $99 reduced to $79, 20% off labor, priority scheduling, no after-hours fees, annual health and safety check.',guarantees:'Guarantees: 100% satisfaction; on-time guarantee pays $5 per minute late, up to $300; UWIN claims resource.',services:'Services: leak detection, slab leaks, repiping and water lines, water heaters, drain cleaning and hydro jetting, sewers, faucets, bathtubs, showers, sinks, toilets, garbage disposals, plumbing repairs, inspections and maintenance, 24/7 emergency service, water filtration and softeners.',email:'Email: not listed on the website. Booking is by phone or online form.'};
+    const serviceCatalog={
+      leak:{label:'Leak Detection',icon:'💧',description:'Find hidden leaks with advanced tools and repair them at the source to help prevent water damage.',detail:`<p><strong>About this service:</strong> Advanced tools help locate leaks without unnecessary damage to the home, followed by repairs at the source to help prevent water damage.</p><p><strong>Includes:</strong> leak repair; slab leak detection and repair. Pool leak detection is listed on national pages; confirm availability with the local office.</p><p>If you have an active leak, shut off the main water valve first, if safe, then call the local 24/7 line: <strong>${BIZ.local}</strong>.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form for details.</p>`},
+      slab:{label:'Slab Leaks',icon:'🏠',description:'Targeted detection and repair for leaks beneath your foundation.',detail:`<p><strong>About this service:</strong> Detects leaks under the foundation and makes targeted repairs to help limit structural damage. The North Austin site notes local soil conditions can stress underground lines.</p><p>If you have an active leak, shut off the main water valve first, if safe, then call <strong>${BIZ.local}</strong>.</p><p>Pricing and financing are not listed on the website.</p>`},
+      repiping:{label:'Repiping & Water Lines',icon:'🔩',description:'Replacement options for older, corroded, or failing pipes and water lines.',detail:`<p><strong>About this service:</strong> Repiping or water-line replacement may be recommended for older homes with corroded or failing pipes, recurring leaks, low pressure, or discolored water.</p><p><strong>Related services:</strong> frozen pipes, leaking pipes, pipe repair, and water-line replacement.</p><p>For an active leak, shut off the main water valve first, if safe. Pricing and financing are not listed on the website; call <strong>${BIZ.local}</strong> for details.</p>`},
+      water:{label:'Water Heaters',icon:'🔥',description:'Diagnosis, repair, and installation of traditional tank and tankless water heaters.',detail:`<p><strong>About this service:</strong> Diagnosis may cover heating-element failure, sediment buildup, or thermostat problems. When repair is no longer cost-effective, the company installs traditional tank or energy-efficient tankless units sized for the home.</p><p><strong>Includes:</strong> water heater repair; installation and replacement; tankless water heaters.</p><p><strong>Typical lifespan:</strong> Traditional tank heaters typically last 8–12 years. Tankless systems can last longer with proper maintenance.</p><p><strong>Related offers:</strong> $100 off any water heater and $300 off a new tankless water heater. Offers expire 2026-12-31; one per household, present at purchase, and not combinable.</p><p>Pricing and financing are not otherwise listed on the website. Call <strong>${BIZ.local}</strong> or use the online form for details.</p>`},
+      tankless:{label:'Tankless Water Heaters',icon:'♨️',description:'Tankless water heater service, installation, and replacement.',detail:`<p><strong>Service:</strong> Tankless water heater service, including installation and replacement.</p><p><strong>Related offer:</strong> $300 off a new tankless water heater. Expires 2026-12-31; one per household, present at purchase, and not combinable.</p><p>Tankless systems can last longer with proper maintenance. Pricing and financing are not otherwise listed on the website. Call <strong>${BIZ.local}</strong> for details.</p>`},
+      drain:{label:'Drains & Drain Cleaning',icon:'🚿',description:'Clear grease, debris, and mineral buildup to restore flow and help prevent backups.',detail:`<p><strong>About this service:</strong> Professional drain cleaning removes grease, debris, and mineral buildup safely to restore water flow and help prevent backups and costly damage.</p><p><strong>Includes:</strong> drain cleaning, drain installation, and hydro jetting. Hydro jetting uses high-pressure water to clean the pipe interior; the FAQ describes it as more thorough than snaking for stubborn buildup.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form to discuss service.</p>`},
+      sewer:{label:'Sewer Services',icon:'🚽',description:'Inspection and repair options for sewer problems and warning signs.',detail:`<p><strong>Watch for:</strong> frequent clogs, sewage odors, or soggy patches in the yard. Inspection techniques help locate the problem and determine a repair approach.</p><p><strong>Includes:</strong> sewer-line repair; sewer-line replacement and installation; trenchless sewer options such as pipe lining or bursting, per the FAQ.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form for details.</p>`},
+      faucets:{label:'Faucets',icon:'🚰',description:'Faucet service and upgrades for improved efficiency and appearance.',detail:`<p>Upgrading faucets can improve both efficiency and appearance. Specific service details are not provided on the website.</p><p>Pricing and financing are not listed. Call <strong>${BIZ.local}</strong> or use the online form to discuss your project.</p>`},
+      bathtubs:{label:'Bathtubs',icon:'🛁',description:'Bathtub plumbing service listed for the North Austin location.',detail:`<p>Bathtubs are listed as a service. Additional service details are on a sub-page that was not reviewed.</p><p>Pricing and financing are not listed on the website. Contact the local office at <strong>${BIZ.local}</strong> for details.</p>`},
+      showers:{label:'Showers',icon:'🚿',description:'Shower installation and repair services.',detail:`<p><strong>Includes:</strong> shower installation and shower repair.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form to discuss your project.</p>`},
+      sinks:{label:'Sinks',icon:'🪠',description:'Sink installation and repair services.',detail:`<p><strong>Includes:</strong> sink installation and sink repair.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form for details.</p>`},
+      toilets:{label:'Toilets',icon:'🚽',description:'Toilet installation and repair services.',detail:`<p><strong>Includes:</strong> toilet repair and toilet installation.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form for details.</p>`},
+      disposal:{label:'Garbage Disposals',icon:'🍽️',description:'Garbage disposal installation and repair.',detail:`<p><strong>Includes:</strong> garbage disposal installation and garbage disposal repair.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form to discuss your disposal.</p>`},
+      repairs:{label:'Plumbing Repairs',icon:'🛠️',description:'General plumbing repair, installation, inspection, and diagnosis.',detail:`<p><strong>About this service:</strong> General repair services, plus inspection and diagnosis.</p><p><strong>Includes:</strong> plumbing installation; plumbing inspection and diagnosis. The FAQ recommends an annual inspection, especially for older homes.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> or use the online form for details.</p>`},
+      maintenance:{label:'Preventative Maintenance & Inspections',icon:'🩺',description:'Routine checks and maintenance to catch plumbing problems early.',detail:`<p><strong>About this service:</strong> Annual inspections check pipe integrity, water pressure, and appliance connections. Scheduled drain cleaning can help prevent buildup; early repairs may help avoid water damage and premature water-heater replacement.</p><p><strong>Maintenance plan:</strong> Club membership includes one annual visit and health and safety check. Membership is $7.99/month or $95.88/year; trip charge is reduced from $99 to $79, with 20% off labor, priority scheduling, and no after-hours fees.</p><p>Pricing for other maintenance services is not listed. For membership questions, call <strong>${BIZ.club}</strong>; for service, call <strong>${BIZ.local}</strong>.</p>`},
+      emergency:{label:'Emergency Plumbing',icon:'🚨',description:'24/7 emergency service for urgent plumbing situations.',detail:`<p>Emergency service is available 24/7. A qualified plumber responds to urgent situations to help limit damage.</p><p><strong>First step:</strong> Shut off the main water valve first, if safe, then call the local 24/7 line: <strong>${BIZ.local}</strong>.</p><p>Emergency service pricing is not listed on the website. Club members receive a reduced trip charge ($99 to $79).</p>`},
+      filtration:{label:'Water Treatment & Filtration',icon:'💦',description:'Water treatment options for chlorine, sediment, contaminants, taste, and odor.',detail:`<p><strong>About this service:</strong> Filtration removes chlorine, sediment, and contaminants that can affect taste, odor, and health. The company recommends a water test by a licensed plumber to choose the right system.</p><p><strong>Includes:</strong> whole-house water filtration; Brita Pro under-sink filters; reverse osmosis systems; carbon filters; and water softener systems. Filter replacement is usually every 3–6 months, depending on the system and household use.</p><p><strong>Related offers:</strong> $300 off a water softener and $800 off a water softener/filtration combo. Offers expire 2026-12-31; one per household, present at purchase, and not combinable.</p><p>Pricing and financing are not listed on the website. Call <strong>${BIZ.local}</strong> for details.</p>`},
+      pumps:{label:'Pumps',icon:'🏭',description:'Pump services; confirm national-site services with the local office.',detail:`<p><strong>North Austin navigation:</strong> sump pumps.</p><p><strong>Listed on the national site:</strong> ejector pumps, pool pump plumbers, water pumps, and well pumps. These do not appear in the North Austin navigation; confirm local availability before booking.</p><p>Pricing and financing are not listed. Call <strong>${BIZ.local}</strong> to confirm service availability.</p>`},
+      outdoor:{label:'Outdoor Plumbing',icon:'🌳',description:'Outdoor plumbing service listed for the business.',detail:`<p>Outdoor plumbing services are listed on the site; further sub-page details were not reviewed.</p><p>Pricing and financing are not listed. Contact the local office at <strong>${BIZ.local}</strong> to confirm the service you need.</p>`},
+      gas:{label:'Gas Lines',icon:'🔥',description:'Gas-line service listed for the business.',detail:`<p>Gas lines are listed as a service; further sub-page details were not reviewed.</p><p>Pricing and financing are not listed. Call <strong>${BIZ.local}</strong> to discuss the service and confirm availability.</p>`},
+      commercial:{label:'Commercial Plumbing',icon:'🏢',description:'Commercial plumbing service listed for the business.',detail:`<p>Commercial plumbing services are listed on the site; further sub-page details were not reviewed.</p><p>Pricing and financing are not listed. Contact the local office at <strong>${BIZ.local}</strong> to confirm the service you need.</p>`},
+      national:{label:'National-Site Services',icon:'🔥',description:'Additional services listed nationally; confirm local availability before booking.',detail:`<p>These services are listed only on the national site and do not appear in the North Austin navigation. Please confirm with the local office before booking.</p><p><strong>Includes:</strong> boilers (installation, replacement, and repair); bidets; septic; pool leak detection and pool pumps; and ejector pumps.</p><p>Pricing and financing are not listed. Call <strong>${BIZ.local}</strong> to confirm whether a service is available locally.</p>`}
+    };
+    const info={
+      emergency:{title:'Emergency plumbing',body:`<p>I’m sorry you’re dealing with this. <strong>Shut off the main water valve first, if safe.</strong> Then call the local 24/7 number: <strong>${BIZ.local}</strong>.</p><p>The local phone is available for <strong>24/7 emergency</strong> service. Regular hours are not listed.</p>`,suggestions:['I have a leak','Service areas','Current offers']},
+      services:{title:'Plumbing services',allServices:true,suggestions:['Current offers','Club membership','Service areas']},
+      bot:{title:'About this chat',body:`<p>Yes, this is an automated assistant. I can share the business information shown here, but I’m not a live technician.</p>`,suggestions:['Plumbing services','Contact details','Emergency service']},
+      offers:{title:'Current offers',body:`<div class="offer-card"><strong>$100 off a water heater</strong><p>Save $100 on a water heater.</p><small>Expires 2026-12-31</small><p class="offer-terms">One per household; present at purchase; cannot be combined with other offers.</p></div><div class="offer-card"><strong>$300 off a water softener</strong><p>Save $300 on a water softener.</p><small>Expires 2026-12-31</small><p class="offer-terms">One per household; present at purchase; cannot be combined with other offers.</p></div><div class="offer-card"><strong>$800 off a softener/filtration combo</strong><p>Save $800 on a water softener and filtration combination.</p><small>Expires 2026-12-31</small><p class="offer-terms">One per household; present at purchase; cannot be combined with other offers.</p></div><div class="offer-card"><strong>$300 off a tankless water heater</strong><p>Save $300 on a tankless water heater.</p><small>Expires 2026-12-31</small><p class="offer-terms">One per household; present at purchase; cannot be combined with other offers.</p></div><div class="offer-card"><strong>$50 off any service or repair</strong><p>Save $50 on any service or repair.</p><small>Expires 2026-12-31</small><p class="offer-terms">One per household; present at purchase; cannot be combined with other offers.</p></div><p>For details or to arrange service, call <strong>${BIZ.local}</strong> or use the online form.</p>`,suggestions:['Water Heaters','Water Filtration','Club membership']},
+      membership:{title:'Club membership',body:`<p>${BIZ.clubInfo}</p><p>For membership questions, call <strong>${BIZ.club}</strong>.</p>`,suggestions:['Membership phone','Current offers','Book online']},
+      guarantees:{title:'Guarantees',body:`<p>${BIZ.guarantees}</p><p>Specific claim details are not listed here. Contact the business for more information.</p>`,suggestions:['Call about guarantees','Current offers','Book online']},
+      areas:{title:'Service areas',body:`<p><strong>Service areas:</strong> ${BIZ.areas}</p><p>Call <strong>${BIZ.local}</strong> to ask about service for your location.</p>`,suggestions:['Address','Call 24/7','Book online']},
+      contact:{title:'Contact and booking',body:`<p><strong>Local 24/7:</strong> ${BIZ.local}<br><strong>National:</strong> ${BIZ.national}<br><strong>Club membership:</strong> ${BIZ.club}</p><p>${BIZ.email}</p>`,suggestions:['Address','Service areas','Club membership']},
+      address:{title:'Business address',body:`<p><strong>Address:</strong> ${BIZ.address}</p><p>For service information, call <strong>${BIZ.local}</strong> or use the online form.</p>`,suggestions:['Service areas','Call 24/7','Book online']},
+      hours:{title:'Hours',body:`<p><strong>${BIZ.hours}</strong></p><p>Local 24/7 number: <strong>${BIZ.local}</strong>.</p>`,suggestions:['Emergency service','Service areas','Book online']},
+      license:{title:'License',body:`<p>${BIZ.license}</p><p>For additional license information, contact the business.</p>`,suggestions:['Contact details','Service areas','Book online']},
+      booking:{title:'Book service',body:`<p>You can book online or call us.</p><p><a href="https://www.benjaminfranklinplumbing.com/north-austin/request-an-appointment/" target="_blank" rel="noopener noreferrer">Book online</a> or call <strong>${BIZ.local}</strong>.</p>`,suggestions:['Call 24/7','Service areas','Current offers']},
+      general:{title:'How can I help?',body:`<p>${BIZ.name}</p><p>${BIZ.services}</p><p>Ask about a listed service, offers, membership, guarantees, hours, service areas, the address, or booking.</p>`,suggestions:['Services','Current offers','Service areas']},
+      svcWater:{title:'Water Heaters',catalogKey:'water',suggestions:['Water Heaters','Current offers','Book online']},
+      svcTankless:{title:'Tankless Heaters',catalogKey:'tankless',suggestions:['Tankless Heaters','Water Heaters','Current offers']},
+      svcLeak:{title:'Leak Detection',catalogKey:'leak',suggestions:['Leak Detection','Slab Leaks','Emergency service']},
+      svcSlab:{title:'Slab Leaks',catalogKey:'slab',suggestions:['Slab Leaks','Leak Detection','Repiping']},
+      svcDrain:{title:'Drain Cleaning',catalogKey:'drain',suggestions:['Drains & Drain Cleaning','Sewer Services','Emergency service']},
+      svcSewer:{title:'Sewer Repair',catalogKey:'sewer',suggestions:['Sewer Repair','Drain Cleaning','Emergency service']},
+      svcRepiping:{title:'Repiping',catalogKey:'repiping',suggestions:['Repiping','Leak Detection','Water Filtration']},
+      svcFiltration:{title:'Water Filtration',catalogKey:'filtration',suggestions:['Water Treatment & Filtration','Water Heaters','Current offers']},
+      svcFaucets:{title:'Faucets',catalogKey:'faucets',suggestions:['Faucets','Plumbing Repairs','Book online']},
+      svcFixtures:{title:'Plumbing Fixtures',catalogKey:'faucets',suggestions:['Faucets','Showers','Sinks']},
+      svcBathtubs:{title:'Bathtubs',catalogKey:'bathtubs',suggestions:['Bathtubs','Showers','Book online']},
+      svcShowers:{title:'Showers',catalogKey:'showers',suggestions:['Showers','Bathtubs','Plumbing Repairs']},
+      svcSinks:{title:'Sinks',catalogKey:'sinks',suggestions:['Sinks','Faucets','Plumbing Repairs']},
+      svcToilets:{title:'Toilets',catalogKey:'toilets',suggestions:['Toilets','Plumbing Repairs','Book online']},
+      svcDisposal:{title:'Garbage Disposals',catalogKey:'disposal',suggestions:['Garbage Disposals','Plumbing Repairs','Fixtures']},
+      svcRepairs:{title:'Repairs',catalogKey:'repairs',suggestions:['Repairs','Maintenance','Emergency service']},
+      svcMaintenance:{title:'Maintenance',catalogKey:'maintenance',suggestions:['Preventative Maintenance','Club membership','Plumbing Repairs']},
+      svcEmergency:{title:'Emergency',catalogKey:'emergency',suggestions:['Emergency','Leak Detection','Service areas']},
+      svcPumps:{title:'Pumps',catalogKey:'pumps',suggestions:['Pumps','Emergency','Book online']},
+      svcOutdoor:{title:'Outdoor Plumbing',catalogKey:'outdoor',suggestions:['Outdoor Plumbing','Pumps','Book online']},
+      svcGas:{title:'Gas Lines',catalogKey:'gas',suggestions:['Gas Lines','Emergency','Book online']},
+      svcCommercial:{title:'Commercial Plumbing',catalogKey:'commercial',suggestions:['Commercial Plumbing','Plumbing Repairs','Book online']},
+      svcNational:{title:'National-Site Services',catalogKey:'national',suggestions:['Pumps','Leak Detection','Contact details']}
+    };
+    const presets={popup:{messages:'popupMessages',suggestions:'popupSuggestions',input:'popupInput',form:'popupForm',banner:'popupEmergency'}};
+    let lastServiceTopic='';
+    function getTopic(text){
+      const v=text.toLowerCase().replace(/[’']/g,"'");
+      const serviceListIntent=/\b(?:what|which)\s+(?:plumbing\s+)?services?\b|\b(?:list|show|all)\b.{0,25}\bservices?\b|\bwhat services? do you (?:offer|provide|handle|do)\b|\bservices? (?:do you offer|you offer|available|provided)\b|\b(?:tell me about|more about)\s+(?:your|the)\s+(?:plumbing\s+)?services?\b|\bwhat can you help (?:me )?with\b/.test(v);
+      const specificService=/tank\s*less|water\s*heater|hot water|slab leak|leak|repip|pipe|water line|drain|hydro.?jet|sewer|filtration|filter|softener|reverse osmosis|brita|faucet|tap|bathtub|\btub\b|shower|sink|toilet|loo|fixture|garbage disposal|food disposal|pump|outdoor plumbing|outside plumbing|gas line|gas pipe|commercial plumbing|inspection|maintenance|preventative|preventive|plumbing repair|plumbing install|boiler|bidet|septic|pool|this service|that service|this particular|that particular/.test(v);
+      if(/are you\s+(?:a\s+)?(?:bot|human|person|real|live|ai)|are you a human being|are you (?:an? )?(?:artificial intelligence|automated)|is this (?:a )?(?:bot|automated)|talking to (?:a )?(?:bot|human|person)|who am i talking to|automated assistant|are you hr|\b(?:bot|chatbot)\b|\b(?:ai|a\.i\.)\b/.test(v))return'bot';
+      if(/\b(emergency|urgent|flood(?:ing)?|burst|no water|water everywhere|water is pouring|pipe burst|overflow(?:ing)?)\b/.test(v))return'emergency';
+      if(serviceListIntent)return'services';
+      if(/offer|coupon|discount|special|promo(?:tion)?|deal|save money|saving/.test(v)&&!specificService)return'offers';
+      if(/service area|where (?:do you|can you) (?:work|serve)|\bwhere\b|coverage|\bserve\b|do you come to|in my (?:area|city|town)|zip code/.test(v))return'areas';
+      if(/national site|boiler|bidet|septic|pool pump|ejector pump/.test(v))return'svcNational';
+      if(/tankless|tank-less/.test(v))return'svcTankless';
+      if(/water heater|hot water|no hot water|\bheater\b/.test(v))return'svcWater';
+      if(/slab leak|leak under (?:the )?(?:slab|foundation)/.test(v))return'svcSlab';
+      if(/sewer|sewage|sewer smell/.test(v))return'svcSewer';
+      if(/repip|frozen pipe|pipe repair|water line replacement|replace (?:my )?pipes|low water pressure|discolored water/.test(v))return'svcRepiping';
+      if(/leak detection|\bleaks?\b|leaking|water line|pool leak|dripping|water damage/.test(v))return'svcLeak';
+      if(/drain|hydro.?jet|clog|slow drain|back(?:ed)? up/.test(v))return'svcDrain';
+      if(/filter|softener|reverse osmosis|brita|water treatment|hard water|water taste|water quality/.test(v))return'svcFiltration';
+      if(/garbage disposal|food disposal/.test(v))return'svcDisposal';
+      if(/faucet|tap replacement|tap repair/.test(v))return'svcFaucets';
+      if(/bathtub|tub repair/.test(v))return'svcBathtubs';
+      if(/shower/.test(v))return'svcShowers';
+      if(/sink/.test(v))return'svcSinks';
+      if(/toilet|loo/.test(v))return'svcToilets';
+      if(/fixture/.test(v))return'svcFixtures';
+      if(/pump/.test(v))return'svcPumps';
+      if(/outdoor plumbing|outside plumbing/.test(v))return'svcOutdoor';
+      if(/gas line|gas pipe/.test(v))return'svcGas';
+      if(/commercial plumbing|business plumbing/.test(v))return'svcCommercial';
+      if(/inspection|maintenance|preventative|preventive|annual check/.test(v))return'svcMaintenance';
+      if(/repair|installation|plumbing install/.test(v))return'svcRepairs';
+      if(/membership|plumbing club|\bclub\b|member benefits|monthly plan|annual plan/.test(v))return'membership';
+      if(/guarantee|uwin|\blate\b|on time promise|satisfaction/.test(v))return'guarantees';
+      if(/address|location|directions|street address/.test(v))return'address';
+      if(/hour|\bopen\b|24.?7|when are you available|business hours/.test(v))return'hours';
+      if(/license|licensed|master plumber|license number/.test(v))return'license';
+      if(/book|online form|appointment|schedule|make an appointment|come out|send a plumber/.test(v))return'booking';
+      if(/phone|number|contact|email|\bcall\b|how do i reach|talk to someone|speak to someone/.test(v))return'contact';
+      if(/^(?:plumbing )?services?$/.test(v.trim())||/\bwhat can you help (?:me )?with\b|\bwhat kinds of plumbing\b/.test(v))return'services';
+      if(/\b(?:this|that|same) service\b|\babout it\b|\b(?:offer|discount|deal)s?\b.{0,25}\b(?:this|that)\b/.test(v)&&lastServiceTopic)return lastServiceTopic;
+      return'general'
+    }
+    function addSpeakButton(bubble){const button=document.createElement('button');button.type='button';button.className='speak-button';button.dataset.speak='true';button.setAttribute('aria-label','Play this answer in English');button.setAttribute('aria-pressed','false');button.textContent='▶ Listen in English';bubble.appendChild(button)}
+    function speakMessage(button){if(!('speechSynthesis'in window)||!('SpeechSynthesisUtterance'in window)){button.textContent='Audio unavailable';button.disabled=true;return}if(button.getAttribute('aria-pressed')==='true'){window.speechSynthesis.cancel();document.querySelectorAll('.speak-button').forEach(control=>{control.setAttribute('aria-pressed','false');control.textContent='▶ Listen in English'});return}const bubble=button.closest('.bubble');if(!bubble)return;const copy=bubble.cloneNode(true);copy.querySelectorAll('.speak-button').forEach(control=>control.remove());const text=(copy.innerText||copy.textContent||'').replace(/✦/g,'').replace(/\s+/g,' ').trim();if(!text)return;window.speechSynthesis.cancel();document.querySelectorAll('.speak-button').forEach(control=>{control.setAttribute('aria-pressed','false');control.textContent='▶ Listen in English'});const utterance=new SpeechSynthesisUtterance(text);utterance.lang='en-US';utterance.onend=()=>{button.setAttribute('aria-pressed','false');button.textContent='▶ Listen in English'};utterance.onerror=utterance.onend;button.setAttribute('aria-pressed','true');button.textContent='⏹ Stop audio';window.speechSynthesis.speak(utterance)}
+    function createMessage(panel,text,isUser=false,topic='general'){
+      const cfg=presets[panel],list=document.getElementById(cfg.messages),row=document.createElement('div');row.className='message-row'+(isUser?' user':'');
+      if(!isUser){const avatar=document.createElement('div');avatar.className='avatar';avatar.setAttribute('aria-hidden','true');avatar.textContent='✦';row.appendChild(avatar)}
+      const bubble=document.createElement('div');bubble.className='bubble';
+      if(isUser)bubble.textContent=text;else{
+        const item=info[topic]||info.general;
+        bubble.innerHTML=`<div class="reply-title"><span>✦</span> ${item.title}</div>`;
+        if(item.allServices){Object.entries(serviceCatalog).forEach(([key,svc])=>{const card=document.createElement('div');card.className='service-catalog-card';const copy=document.createElement('span');copy.className='service-summary-copy';copy.innerHTML=`<strong>${svc.label}</strong><small>${svc.description}</small>`;const icon=document.createElement('span');icon.className='service-icon';icon.setAttribute('aria-hidden','true');icon.textContent=svc.icon;const button=document.createElement('button');button.type='button';button.className='service-view';button.dataset.serviceDetail=key;button.innerHTML='View details <span class="service-arrow" aria-hidden="true">→</span>';card.append(icon,copy,button);bubble.appendChild(card)})}else if(item.catalogKey){const svc=serviceCatalog[item.catalogKey];const card=document.createElement('div');card.className='service-card';card.innerHTML=`<span class="service-icon" aria-hidden="true">${svc.icon}</span><span><strong>${svc.label}</strong><small>${svc.description}</small></span>`;bubble.appendChild(card);const detail=document.createElement('div');detail.innerHTML=svc.detail;bubble.appendChild(detail)}else{const detail=document.createElement('div');detail.innerHTML=topic==='offers'&&new Date()>new Date('2026-12-31T23:59:59')?'<p>No current offers are listed right now. Please call us.</p>':(item.body||'');bubble.appendChild(detail)}
+      }
+      if(!isUser)addSpeakButton(bubble);
+      row.appendChild(bubble);list.appendChild(row);list.scrollTop=row.offsetTop-list.offsetTop;
+    }
+    const suggestionTimers={};
+    function updateSuggestions(panel,topic){const cfg=presets[panel],target=document.getElementById(cfg.suggestions),item=info[topic]||info.general,related=item.suggestions||info.general.suggestions;const sameTopic={offers:/offer/i,membership:/membership|club/i,areas:/service areas/i,services:/^(plumbing )?services$/i,booking:/book/i,contact:/contact/i,address:/address/i,hours:/hours/i,license:/license/i,guarantees:/guarantees/i,emergency:/emergency service/i,svcWater:/water heaters?/i,svcTankless:/tankless/i,svcLeak:/leak detection/i,svcSlab:/slab leak/i,svcDrain:/drain|hydro.?jet/i,svcSewer:/sewer/i,svcRepiping:/repip|water line/i,svcFiltration:/water treatment|filtration|softener/i,svcFaucets:/faucet/i,svcFixtures:/faucet|fixture/i,svcBathtubs:/bathtub/i,svcShowers:/shower/i,svcSinks:/sink/i,svcToilets:/toilet/i,svcDisposal:/disposal/i,svcRepairs:/repair/i,svcMaintenance:/maintenance|inspection/i,svcEmergency:/emergency/i,svcPumps:/pump/i,svcOutdoor:/outdoor plumbing/i,svcGas:/gas line/i,svcCommercial:/commercial plumbing/i,svcNational:/national-site/i};const excluded=sameTopic[topic];const labels=[...new Set(['Current offers','Leak Detection','Business address','Service areas','Water Heaters','Drains & Drain Cleaning','Water Treatment & Filtration','Sewer Services','Repiping','Faucets','Showers','Toilets','Emergency service',...related,'Club membership'].filter(x=>!/(call|book|appointment)/i.test(x)&&!/^(plumbing )?services$/i.test(x)&&!(excluded&&excluded.test(x))))];if(suggestionTimers[panel])window.clearInterval(suggestionTimers[panel]);let offset=0;const render=()=>{target.replaceChildren();for(let i=0;i<Math.min(3,labels.length);i++){const label=labels[(offset+i)%labels.length],button=document.createElement('button');button.type='button';button.className='suggestion';button.textContent=label;button.dataset.prompt=label;target.appendChild(button)}};render();if(labels.length>3)suggestionTimers[panel]=window.setInterval(()=>{offset=(offset+1)%labels.length;render()},3500)}
+    function updateActions(panel){const list=document.getElementById(presets[panel].messages);list.querySelector('.reply-actions')?.remove();const last=list.lastElementChild;if(!last||last.classList.contains('user'))return;const actions=document.createElement('div');actions.className='reply-actions';const call=document.createElement('a');call.className='call-action';call.href='tel:+15126484208';call.textContent='Call (512) 648-4208';const book=document.createElement('a');book.href='https://www.benjaminfranklinplumbing.com/north-austin/request-an-appointment/';book.target='_blank';book.rel='noopener noreferrer';book.textContent='Book online';actions.append(call,book);list.appendChild(actions)}
+    function ask(panel,text){const value=text.trim();if(!value)return;updateActions(panel);createMessage(panel,value,true);let topic=getTopic(value);if(info[topic]?.catalogKey)lastServiceTopic=topic;const emergency=/\b(emergency|urgent|burst|flood(?:ing)?|no water|water everywhere)\b|\bi have (?:a )?leak\b|\bleaking\b/i.test(value);document.getElementById(presets[panel].banner).classList.toggle('visible',emergency);const input=document.getElementById(presets[panel].input);input.value='';createMessage(panel,'',false,topic);updateSuggestions(panel,topic);updateActions(panel)}
+    function showServiceDetails(panel,key){const svc=serviceCatalog[key];if(!svc)return;updateActions(panel);createMessage(panel,`About ${svc.label}`,true);const topic=Object.keys(info).find(name=>info[name].catalogKey===key)||'general';lastServiceTopic=topic;document.getElementById(presets[panel].banner).classList.toggle('visible',key==='emergency');createMessage(panel,'',false,topic);updateSuggestions(panel,topic);updateActions(panel)}
+    function initPanel(panel){const cfg=presets[panel];updateSuggestions(panel,'general');updateActions(panel);document.getElementById(cfg.form).addEventListener('submit',e=>{e.preventDefault();ask(panel,document.getElementById(cfg.input).value)});document.getElementById(cfg.suggestions).addEventListener('click',e=>{const button=e.target.closest('[data-prompt]');if(button)ask(panel,button.dataset.prompt)});document.getElementById(cfg.messages).addEventListener('click',e=>{const speak=e.target.closest('[data-speak]');if(speak){speakMessage(speak);return}const details=e.target.closest('[data-service-detail]');if(details){showServiceDetails(panel,details.dataset.serviceDetail);return}const button=e.target.closest('[data-prompt]');if(button)ask(panel,button.dataset.prompt)})}
+    initPanel('popup');
+    const shell=document.getElementById('chatShell'),launcher=document.getElementById('launcher');function setOpen(open){const wasOpen=shell.classList.contains('open');shell.classList.toggle('open',open);document.body.classList.toggle('chat-open',open);shell.setAttribute('aria-hidden',String(!open));launcher.setAttribute('aria-expanded',String(open));if(open&&window.matchMedia('(hover: hover) and (pointer: fine)').matches)document.getElementById('popupInput').focus();else if(!open&&wasOpen)launcher.focus()}
+    launcher.addEventListener('click',()=>setOpen(!shell.classList.contains('open')));document.getElementById('closeChat').addEventListener('click',()=>setOpen(false));
+    function syncChatViewport(){const viewport=window.visualViewport;document.documentElement.style.setProperty('--chat-viewport-height',`${viewport?viewport.height:window.innerHeight}px`);document.documentElement.style.setProperty('--chat-viewport-top',`${viewport?viewport.offsetTop:0}px`)}
+    window.visualViewport?.addEventListener('resize',syncChatViewport);window.addEventListener('resize',syncChatViewport);syncChatViewport();
+    document.querySelectorAll('.contact-trigger').forEach(button=>{const card=document.getElementById(button.getAttribute('aria-controls'));button.addEventListener('click',()=>{const opening=card.hidden;document.querySelectorAll('.contact-card').forEach(item=>item.hidden=true);document.querySelectorAll('.contact-trigger').forEach(trigger=>trigger.setAttribute('aria-expanded','false'));card.hidden=!opening;button.setAttribute('aria-expanded',String(opening))})});
+    document.querySelectorAll('.service-trigger').forEach(button=>button.addEventListener('click',()=>ask(button.dataset.panel,'Services')));
+    document.querySelectorAll('.contact-close').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('.contact-card');card.hidden=true;document.querySelector(`[aria-controls="${card.id}"]`).setAttribute('aria-expanded','false')}));
+    document.addEventListener('pointerdown',e=>{if(e.target.closest('.contact-card,.contact-trigger'))return;document.querySelectorAll('.contact-card').forEach(card=>{card.hidden=true;document.querySelector(`[aria-controls="${card.id}"]`).setAttribute('aria-expanded','false')})});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.contact-card').forEach(card=>{card.hidden=true;document.querySelector(`[aria-controls="${card.id}"]`).setAttribute('aria-expanded','false')});setOpen(false)}});
+    const customerReviews=[
+      {author:'David Hill',date:'October 16, 2026',text:'Brandon is personable, competent, thorough!!!'},
+      {author:'Janel McCrory',date:'October 16, 2026',text:'They were top notch! Timely response and their professionalism and quality of work was a 10/10! Highly recommend! Thank you for all of your help!'},
+      {author:'J Ciapala',date:'October 16, 2026',text:'Davy Hunt is the best plumber I’ve ever had and I’ve had a few. Courteous, polite and very friendly and exceptionally good at what he does. Ask for him specifically. 6 stars out of 5. Thank you'},
+      {author:'Peter Klemkowsky',date:'October 16, 2026',text:'After investigating, multiple breaks were repaired after the water meters. Stayed until full repair was completed and disturbed area repaired. Great job. I will consider hiring Ben Franklin for any additional repairs needed.'},
+      {author:'Zachary Temple',date:'October 15, 2026',text:'Quick to respond and get out to look at the job. Excellent work, done quickly and prices were reasonable. Davy was great.'},
+      {author:'Lynne Jones',date:'October 15, 2026',text:'Very prompt response and very friendly and courteous people. Highly recommend.'},
+      {author:'Katherine Leitner',date:'October 15, 2026',text:'Great experience with this new company. John, the owner, was extremely helpful in his initial visit. Follow up appointments were needed and Hugo was assigned as our technician. Hugo was kind and knowledgeable. He explained everything and completed everything well. Will definitely recommend Benjamin Franklin Plumbing to friends and family.'},
+      {author:'Thomas Miller',date:'October 14, 2026',text:'Great service, worked over allotted time and did not charge more than agreed. Good guys, very pleased and will use again!'},
+      {author:'James',date:'October 14, 2026',text:'Needed a new well pump installed. Exceptional customer service, responsiveness, flexibility, communication, timeliness, quality, and technical expertise, all at a fair price. Highly recommend!'},
+      {author:'David O’Brien',date:'October 13, 2026',text:'Hugo arrived at my house within the window of time I was expecting which was helpful. I could tell he knew what he was talking about. He gave me several options including an option to finance the replacement of my hot water heater. In short, he was kind, courteous and professional.'},
+    ];
+    const reviewQuote=document.getElementById('reviewQuote'),reviewAuthor=document.getElementById('reviewAuthor'),reviewDate=document.getElementById('reviewDate'),reviewCard=document.querySelector('.review-card'),reviewProgress=document.getElementById('reviewProgress'),reviewArea=document.querySelector('.reviews');
+    customerReviews.forEach((_,index)=>{const dot=document.createElement('button');dot.type='button';dot.className='review-dot'+(index===0?' active':'');dot.setAttribute('role','tab');dot.setAttribute('aria-label',`Show review ${index+1} of ${customerReviews.length}`);dot.setAttribute('aria-selected',String(index===0));dot.addEventListener('click',()=>{pauseReviews();showReview(index)});reviewProgress.appendChild(dot)});
+    let reviewIndex=0,reviewTimer=null,resumeTimer=null,pausedUntil=0;
+    function showReview(index){reviewIndex=(index+customerReviews.length)%customerReviews.length;const review=customerReviews[reviewIndex];reviewCard.classList.add('is-changing');window.setTimeout(()=>{reviewQuote.textContent=`“${review.text}”`;reviewAuthor.textContent=review.author;reviewDate.textContent=review.date||'';reviewDate.removeAttribute('datetime');[...reviewProgress.children].forEach((dot,dotIndex)=>{const active=dotIndex===reviewIndex;dot.classList.toggle('active',active);dot.setAttribute('aria-selected',String(active))});reviewCard.classList.remove('is-changing')},220)}
+    const stopReviews=()=>{if(reviewTimer){window.clearInterval(reviewTimer);reviewTimer=null}};
+    function startReviews(){stopReviews();if(Date.now()<pausedUntil){if(resumeTimer)window.clearTimeout(resumeTimer);resumeTimer=window.setTimeout(()=>{resumeTimer=null;startReviews()},pausedUntil-Date.now());return}if(resumeTimer){window.clearTimeout(resumeTimer);resumeTimer=null}reviewTimer=window.setInterval(()=>showReview(reviewIndex+1),3500)}
+    function pauseReviews(milliseconds=10000){stopReviews();pausedUntil=Math.max(pausedUntil,Date.now()+milliseconds);if(resumeTimer)window.clearTimeout(resumeTimer);resumeTimer=window.setTimeout(()=>{resumeTimer=null;startReviews()},Math.max(0,pausedUntil-Date.now()))}
+    ['pointerdown','touchstart','wheel','scroll'].forEach(type=>reviewArea.addEventListener(type,()=>pauseReviews(),{passive:true}));
+    startReviews();
+  </script>
+
+</body>
+</html>
